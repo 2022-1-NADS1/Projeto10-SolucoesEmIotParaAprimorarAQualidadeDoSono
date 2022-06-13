@@ -55,13 +55,6 @@ unsigned long previousTime = 0;
 const long timeoutTime = 2000;
 
 
-//IP ESTATICO
-IPAddress local_IP (192,168,0,125);
-IPAddress gateway(192,168,0,1);
-IPAddress subnet(255,255,255,0);
-IPAddress primaryDNS(8,8,8,8);
-IPAddress secondaryDNS(8,8,4,4);
-
 void setup() {
 Serial.begin(115200);
 
@@ -80,12 +73,6 @@ digitalWrite(azulLED, 0);
 // Conecta na rede wifi com usuario e senha
 Serial.print("Connecting to ");
 Serial.println(ssid);
-
-if(!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS))
-{
-  Serial.println("STA Failed to configure");
-}
-
 WiFi.begin(ssid, password);
 while (WiFi.status() != WL_CONNECTED) {
 delay(500);
